@@ -12,9 +12,31 @@ class TableViewCell: UITableViewCell {
     
     static let id = "TableViewCell"
     
-    let profile = UIImageView()
-    let name =  UILabel()
-    let phoneNumber = UILabel()
+    let profile: UIImageView = {
+        let profile = UIImageView()
+        profile.layer.cornerRadius = 25
+        profile.clipsToBounds = true
+        profile.contentMode = .scaleAspectFill
+        profile.layer.borderColor = UIColor.gray.cgColor
+        profile.layer.borderWidth = 1.0
+        
+        return profile
+    }()
+    
+    let name: UILabel = {
+        let name = UILabel()
+        name.font = .systemFont(ofSize: 16, weight: .bold)
+        
+        return name
+    }()
+    
+    let phoneNumber: UILabel = {
+        let phoneNumber = UILabel()
+        phoneNumber.font = .systemFont(ofSize: 14)
+        phoneNumber.textColor = .gray
+        
+        return phoneNumber
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,17 +48,6 @@ class TableViewCell: UITableViewCell {
     }
     
     private func configureUI() {
-        profile.layer.cornerRadius = 25
-        profile.clipsToBounds = true
-        profile.contentMode = .scaleAspectFill
-        profile.layer.borderColor = UIColor.gray.cgColor
-        profile.layer.borderWidth = 1.0
-        
-        name.font = .systemFont(ofSize: 16, weight: .bold)
-        
-        phoneNumber.font = .systemFont(ofSize: 14)
-        phoneNumber.textColor = .gray
-        
         [profile, name, phoneNumber].forEach{ contentView.addSubview($0) }
         
         profile.snp.makeConstraints {
