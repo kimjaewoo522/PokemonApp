@@ -18,13 +18,18 @@
 		4CE49D2E2DB66D4500C76387 /* Exceptions for "PokemonApp" folder in "PokemonApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resources/Info.plist,
 			);
 			target = 4CE49D1B2DB66D4300C76387 /* PokemonApp */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		4C70BEAF2DB929F3005D3C51 /* CoreDatas */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoreDatas;
+			sourceTree = "<group>";
+		};
 		4CE49D1E2DB66D4300C76387 /* PokemonApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -50,6 +55,7 @@
 		4CE49D132DB66D4300C76387 = {
 			isa = PBXGroup;
 			children = (
+				4C70BEAF2DB929F3005D3C51 /* CoreDatas */,
 				4CE49D1E2DB66D4300C76387 /* PokemonApp */,
 				4CE49D1D2DB66D4300C76387 /* Products */,
 			);
@@ -79,6 +85,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				4C70BEAF2DB929F3005D3C51 /* CoreDatas */,
 				4CE49D1E2DB66D4300C76387 /* PokemonApp */,
 			);
 			name = PokemonApp;
@@ -156,7 +163,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PokemonApp/Info.plist;
+				INFOPLIST_FILE = PokemonApp/Resources/info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -184,7 +191,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PokemonApp/Info.plist;
+				INFOPLIST_FILE = PokemonApp/Resources/info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

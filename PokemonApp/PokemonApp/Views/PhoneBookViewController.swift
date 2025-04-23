@@ -1,8 +1,9 @@
 import UIKit
 import SnapKit
+import CoreData
 
 class PhoneBookViewController: UIViewController {
-    
+        
     // MARK: - UI 요소 정의
     
     private let profileImage: UIImageView = {
@@ -97,7 +98,31 @@ class PhoneBookViewController: UIViewController {
     // MARK: - 버튼 액션
     
     @objc private func applyButtonTapped(_ sender: UIBarButtonItem) {
-        print("적용 버튼이 눌렸습니다")
+        guard let name = detailName.text, !name.isEmpty,
+              let phone = detailNum.text, !phone.isEmpty else {
+            print("필드가 비어있음")
+            return
+        }
+        // CoreData context 불러오기
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        // 객체 생성
+        let newContact = PhoneBook(context: context)
+        newContact.name = name
+        newContact.phoneNumber = phone
+        
+        
+        // 이미지 저장
+        newContact.imageData = profileImage.image?.jpegData(compressionQuality: 0.8)
+        
+        do {
+            try context.save()
+            print("저장 성공")
+            navigationController?.popViewController(animated: true)
+        } catch {
+            print("저장 실패: \(error)")
+        }
+        
     }
     
     @objc private func randomButtonTapped(_ sender: UIButton) {

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import CoreData
 
 class TableViewCell: UITableViewCell {
     
@@ -70,8 +71,8 @@ class TableViewCell: UITableViewCell {
     }
     
     func setData(image: UIImage?, names: String, phones: String) {
+        profile.image = image
         name.text = names
         phoneNumber.text = phones
     }
-    
 }

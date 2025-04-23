@@ -7,17 +7,25 @@
 
 import UIKit
 import SnapKit
+import CoreData
 
 class ViewController: UIViewController {
     
-    let contacts: [(name: String, phone: String)] = [
-        ("김재우", "010-1234-5678"),
-        ("김재우", "010-1234-5678"),
-        ("김재우", "010-1234-5678"),
-        ("김재우", "010-1234-5678"),
-        ("김재우", "010-1234-5678"),
-        ("김재우", "010-1234-5678")
-    ]
+    var contacts: [PhoneBook] = []
+    
+    func fetchContacts() {
+        guard let appDelgate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelgate.persistentContainer.viewContext
+        
+        let request: NSFetchRequest<PhoneBook> = PhoneBook.fetchRequest()
+        
+        do {
+            contacts = try context.fetch(request)
+            tableView.reloadData()
+        } catch {
+            print("불러오기 실패: \(error)")
+        }
+    }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -34,6 +42,12 @@ class ViewController: UIViewController {
         configureUI()
         setupNavigationBar()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchContacts()
+    }
+
     
     // MARK: - 네비게이션 바 설정
     
@@ -75,7 +89,16 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let contact = contacts[indexPath.row]
-        cell.setData(image: nil, names: contact.name, phones: contact.phone)
+        let name = contact.name ?? ""
+        let phone = contact.phoneNumber ?? ""
+        let image: UIImage? = {
+            if let data = contact.imageData {
+                return UIImage(data: data)
+            }
+            return nil
+        }()
+        
+        cell.setData(image: image, names: name, phones: phone)
         return cell
     }
 }
